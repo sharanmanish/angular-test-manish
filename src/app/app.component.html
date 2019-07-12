@@ -1,2 +1,10 @@
+<mat-sidenav-container class="example-container ">
+    <mat-sidenav mode="side" opened [fixedInViewport]="true" class="z-depth-5 colbl">
+      <app-left-navigation></app-left-navigation>
+    </mat-sidenav>
 
-<router-outlet></router-outlet>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+

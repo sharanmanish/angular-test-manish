@@ -6,10 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomMaterialModule } from './custom-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { LeftNavigationComponent } from './left-navigation/left-navigation.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LeftNavigationComponent
   ],
   imports: [
     BrowserModule,

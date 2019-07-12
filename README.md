@@ -15,6 +15,8 @@ you have to create a new angular project containing the following components
     3. when a sub-task is completed the status should be reflected 
     4. when all the sub-tasks are completed then the task should also show the completed status
     5. the tasks can be edited as well as deleted same for the sub-tasks
+    
+# NOTE: commit your code in this repo
 
 Sample screen shots are attached below
 
@@ -23,5 +25,7 @@ Sample screen shots are attached below
 ![](https://paper-attachments.dropbox.com/s_C3B19973FA6CBBAE0EEDE74BA766288C256A7C582C07B45318358BB40E892B20_1562914466479_PHOTO-2019-07-12-12-17-59+1.jpg)
 
 ![](https://paper-attachments.dropbox.com/s_C3B19973FA6CBBAE0EEDE74BA766288C256A7C582C07B45318358BB40E892B20_1562914466493_PHOTO-2019-07-12-12-17-59.jpg)
+
+
 
 

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LeftNavigationComponent } from './left-navigation.component';
+import { MainComponent } from './main.component';
 
-describe('LeftNavigationComponent', () => {
-  let component: LeftNavigationComponent;
-  let fixture: ComponentFixture<LeftNavigationComponent>;
+describe('MainComponent', () => {
+  let component: MainComponent;
+  let fixture: ComponentFixture<MainComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LeftNavigationComponent ]
+      declarations: [ MainComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LeftNavigationComponent);
+    fixture = TestBed.createComponent(MainComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

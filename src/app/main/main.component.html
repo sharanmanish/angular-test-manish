@@ -1,4 +1,4 @@
-<div class="padding-top">
+<div class="paddingtop">
   <mat-expansion-panel (opened)="panelOpenState = true"
                        (closed)="panelOpenState = false" [expanded] = "panelOpenState">
     <mat-expansion-panel-header>
@@ -10,42 +10,47 @@
         <div class="line"></div>
       </div>
     </mat-expansion-panel-header>
-    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
-        <mat-nested-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-          <li>
-            <button mat-icon-button disabled></button>
-            <div class="mat-tree-node" fxLayout="row" fxLayoutAlign="none center">
-                &nbsp;
-                <i *ngIf="node.name !== 'Add New'" class="material-icons">
-                    radio_button_unchecked
-                </i>
-                <i *ngIf="node.name === 'Add New'" class="material-icons">
-                    add_circle_outline
-                </i>
-                &nbsp;
-                {{node.name}}
-            </div>
-          </li>
-        </mat-nested-tree-node>
-        <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-          <li class="example-tree-container">
-            <div class="mat-tree-node">
-              <button mat-icon-button matTreeNodeToggle
-                      [attr.aria-label]="'toggle ' + node.name">
-                      <i class="material-icons">
-                          radio_button_checked
+    <div fxLayout="column" fxLayoutGap="30px">
+      <div>
+          <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+              <mat-nested-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+                <li>
+                  <button mat-icon-button disabled></button>
+                  <div class="mat-tree-node" fxLayout="row" fxLayoutAlign="none center">
+                      &nbsp;
+                      <i *ngIf="node.name !== 'Add New'" class="material-icons">
+                          radio_button_unchecked
                       </i>
-              </button>
-              &nbsp;
-              <span style="font-weight: bold; font-size: 18px">
-                  {{node.name}}
-              </span>
-            </div>
-            <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
-              <ng-container matTreeNodeOutlet></ng-container>
-            </ul>
-          </li>
-        </mat-nested-tree-node>
-      </mat-tree>
+                      <i *ngIf="node.name === 'Add New'" class="material-icons">
+                          add_circle_outline
+                      </i>
+                      &nbsp;
+                      {{node.name}}
+                  </div>
+                </li>
+              </mat-nested-tree-node>
+              <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+                <li class="example-tree-container">
+                  <div class="mat-tree-node">
+                    <button mat-icon-button matTreeNodeToggle
+                            [attr.aria-label]="'toggle ' + node.name">
+                            <i class="material-icons">
+                                radio_button_checked
+                            </i>
+                    </button>
+                    &nbsp;
+                    <span style="font-weight: bold; font-size: 18px">
+                        {{node.name}}
+                    </span>
+                  </div>
+                  <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+                    <ng-container matTreeNodeOutlet></ng-container>
+                  </ul>
+                </li>
+              </mat-nested-tree-node>
+          </mat-tree>
+      </div>
+    </div>
+
   </mat-expansion-panel>
 </div>

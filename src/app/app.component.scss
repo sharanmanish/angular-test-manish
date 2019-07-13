@@ -1,9 +1,17 @@
 @import "styles/_colors";
 
 .padding30 {
-  padding: 50px 30px;
+  padding: 0px 30px 50px 30px;
 }
 
 .mat-sidenav-content {
   background: white;
+  height: 100%;
+}
+
+app-action {
+  position: fixed;
+  background-color: white;
+  z-index: 999;
+  width: 77%;
 }

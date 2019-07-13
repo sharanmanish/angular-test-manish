@@ -1,0 +1,83 @@
+.padding-top {
+  padding-top: 30px
+}
+
+.mat-expansion-panel:not([class*='mat-elevation-z']) {
+  box-shadow: none;
+}
+
+.mat-expansion-panel:hover,
+.mat-expansion-panel-header.mat-expanded:hover {
+  background: white;
+}
+
+.line {
+  width: 55vw;
+  height: 0px;
+  border-top: 1.5px solid #dcdcdca4;
+  padding-bottom: 3px;
+  margin-right: 2vw;
+}
+
+.example-tree-invisible {
+  display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+
+mat-tree {
+  margin-left: 40px;
+}
+
+.mat-tree-node {
+  margin: 0px;
+  padding: 0px;
+  min-height: 5px;
+  background-color: white;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li.example-tree-container {
+  border: none;
+}
+
+li {
+  padding-left: 40px;
+  border: 1.5px solid rgba(0, 0, 0, 0.582);
+  border-width: 0 0 1.5px 1.5px;
+  position: relative;
+  top: 0px;
+}
+
+li.mat-tree-node,
+li div {
+  margin: 0;
+  position: relative;
+  top: 10px;
+}
+
+li {
+  border-top: 0px dotted grey;
+  margin-left: -40px;
+  padding-left: 60px;
+}
+
+.mat-nested-tree-node:last-child ul {
+  margin-left: 20px;
+}
+
+.mat-icon-button {
+  z-index: 100;
+}
+

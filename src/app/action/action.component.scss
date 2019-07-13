@@ -42,7 +42,7 @@
     background-color: white;
     border-top: 2px solid #0059fe77;
     border-left: 2px solid #0059fe77;
-    transform: rotate(45deg) translate(349%, -521%);
+    transform: rotate(45deg) translate(318%, -498%);
     height: 11px;
     width: 11px;
 }
@@ -70,3 +70,21 @@
 
 .gradient-button-cls {background-image: linear-gradient(to right, #0058fe 0%, #3a7bd5 51%, #00d2ff 100%)}
 .gradient-button-cls:hover { background-position: right center; }
+
+
+::ng-deep .cdk-overlay-container {
+  /* Do you changes here */
+  top: 20px;
+}
+
+.list-item {
+  padding-right: 10px;
+  width: 100%;
+   &:not(:last-child) {
+    border-bottom: 1px solid gainsboro;
+  }
+}
+
+.color-green {
+  color: #0059fec0;
+}

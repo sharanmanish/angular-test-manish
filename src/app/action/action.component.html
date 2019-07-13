@@ -11,10 +11,13 @@
         </div>
       </div>
     <div fxFlex="9vw">
-        <mat-menu #appMenu="matMenu" xPosition="before">
+        <mat-menu #appMenu="matMenu" xPosition="before" backdropClass="menu">
             <div class="dv"></div>
-            <button mat-menu-item>Settings</button>
-            <button mat-menu-item>Help</button>
+            <div *ngFor="let list of menuList; let i = index" fxLayout="row" fxLayoutAlign="space-between center"
+                  class="list-item" (click)="selectItems(i)">
+                <button mat-menu-item>{{list}}</button>
+                <i class="fa fa-check color-green" *ngIf="marked===i"></i>
+            </div>
         </mat-menu>
         <button mat-button [matMenuTriggerFor]="appMenu">
             Sort By &nbsp;

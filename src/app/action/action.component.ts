@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActionComponent implements OnInit {
 
+  menuList = ['Completed', 'Not Completed', 'Clear All'];
+  marked= 0;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  selectItems(index) {
+this.marked = index;
   }
 
 }

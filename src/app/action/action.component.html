@@ -1,1 +1,40 @@
-<p>action works!</p>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout="row" class="marginright">
+        <div>
+          <input type="text" class="inputSearchBox image-prop"
+            (keyup.backspace)="revertTo()">
+        </div>
+        <div>
+            <i class="material-icons trns">
+                search
+            </i>
+        </div>
+      </div>
+    <div fxFlex="9vw">
+        <mat-menu #appMenu="matMenu" xPosition="before">
+            <div class="dv"></div>
+            <button mat-menu-item>Settings</button>
+            <button mat-menu-item>Help</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="appMenu">
+            Sort By &nbsp;
+              <i class="material-icons">
+                  keyboard_arrow_down
+              </i>
+        </button>
+    </div>
+    <div fxFlex="16vw">
+      <div class="gradient-button gradient-button-cls" fxLayout="row" fxLayoutAlign="center center">
+          <i class="material-icons">
+              add_circle_outline
+          </i>
+          &nbsp;
+          <div>Add Task</div>
+      </div>
+    </div>
+
+</div>
+
+
+
+

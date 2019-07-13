@@ -1,0 +1,72 @@
+@import 'styles/_variables';
+
+.inputSearchBox {
+  border-radius: 25px;
+  height: 37px;
+  width: 45vw;
+  outline-width: 0;
+  padding-left: 15px;
+  color: #6b7178;
+  background-color: #ffffff;
+  border: 1px solid gainsboro;
+}
+
+.image-prop {
+  background-repeat: no-repeat;
+  background-position: 95%;
+  background-color: white;
+}
+
+.imgposition {
+  position: relative;
+  top: 7px;
+  left: 56%;
+}
+
+.trns {
+  transform: translate(-143%, 37%);
+}
+
+.mat-button {
+  background: #ffffff;
+}
+
+
+::ng-deep .mat-menu-content{
+  border: 2px solid #0059fe77;
+  border-radius: 0px 6px 6px 6px;
+}
+
+.dv {
+  position: absolute;
+    background-color: white;
+    border-top: 2px solid #0059fe77;
+    border-left: 2px solid #0059fe77;
+    transform: rotate(45deg) translate(349%, -521%);
+    height: 11px;
+    width: 11px;
+}
+
+.gradient-button {
+  margin: 10px;
+  padding: 15px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: #FFF;
+  display: inline;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 25px;
+}
+.gradient-button:hover{
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  margin: 8px 10px 12px;
+}
+
+.gradient-button-cls {background-image: linear-gradient(to right, #0058fe 0%, #3a7bd5 51%, #00d2ff 100%)}
+.gradient-button-cls:hover { background-position: right center; }

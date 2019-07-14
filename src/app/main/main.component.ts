@@ -1,14 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {NestedTreeControl} from '@angular/cdk/tree';
-import {MatTreeNestedDataSource} from '@angular/material/tree';
-
-interface FoodNode {
-  name: string;
-  date?: Date;
-  children?: FoodNode[];
-}
-
-
 
 @Component({
   selector: 'app-main',
@@ -24,8 +14,8 @@ export class MainComponent implements OnInit {
         {
           name: 'List Title',
           children: [
-            {name: 'Apple', done: false},
-            {name: 'Banana',done: false},
+            {name: 'Apple', done: true},
+            {name: 'Banana', done: false},
             {name: 'Fruit loops', done: false},
             {name: 'Add New', done: true},
           ]
@@ -33,24 +23,24 @@ export class MainComponent implements OnInit {
         {
           name: 'List Title 1',
           children: [
-            {name: 'Apple'},
-            {name: 'Banana'},
-            {name: 'Fruit loops'},
-            {name: 'Add New'},
+            {name: 'Apple', done: false},
+            {name: 'Banana', done: true},
+            {name: 'Fruit loops', done: false},
+            {name: 'Add New', done: true},
           ]
         }
       ]
     },
     {
-      date: new Date(),
+      date: new Date(new Date().setDate(new Date().getDate() - 1)),
       obj: [
         {
           name: 'List Title',
           children: [
-            {name: 'Apple'},
-            {name: 'Banana'},
-            {name: 'Fruit loops'},
-            {name: 'Add New'},
+            {name: 'Apple', done: false},
+            {name: 'Banana', done: false},
+            {name: 'Fruit loops', done: true},
+            {name: 'Add New', done: true},
           ]
         }
       ]

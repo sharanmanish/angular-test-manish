@@ -11,8 +11,12 @@
   background: white;
 }
 
+::ng-deep .mat-expansion-panel-header {
+  margin-left: -20px;
+}
+
 .line {
-  width: 55vw;
+  width: 62vw;
   height: 0px;
   border-top: 1.5px solid #dcdcdca4;
   padding-bottom: 3px;

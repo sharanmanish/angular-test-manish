@@ -2,10 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import {NestedTreeControl} from '@angular/cdk/tree';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
 
-interface FoodNode {
+interface TaskNode {
   name: string;
-  date?: Date;
-  children?: FoodNode[];
+  children?: TaskNode[];
 }
 
 
@@ -16,8 +15,8 @@ interface FoodNode {
 })
 export class TreeComponent implements OnInit {
 
-  treeControl = new NestedTreeControl<FoodNode>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<FoodNode>();
+  treeControl = new NestedTreeControl<TaskNode>(node => node.children);
+  dataSource = new MatTreeNestedDataSource<TaskNode>();
 
   panelOpenState = true;
 
@@ -26,7 +25,7 @@ export class TreeComponent implements OnInit {
   constructor() {
   }
 
-  hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
+  hasChild = (_: number, node: TaskNode) => !!node.children && node.children.length > 0;
 
   ngOnInit() {
     this.dataSource.data = this.data;

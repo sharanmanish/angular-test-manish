@@ -1,23 +1,26 @@
 <div>
       <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
           <mat-nested-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-            <li>
-              <button mat-icon-button disabled></button>
+            <li style="line-height: 0">
+              <div style="height: 20px"></div>
               <div class="mat-tree-node" fxLayout="row" fxLayoutAlign="none center">
                   &nbsp;
-                  <i *ngIf="node.name !== 'Add New'" class="material-icons">
+                  <i *ngIf="node.name !== 'Add New' && !node.done" class="material-icons">
                       radio_button_unchecked
+                  </i>
+                  <i *ngIf="node.name !== 'Add New' && node.done" class="fa fa-check-circle fa-2x" style="color:green">
                   </i>
                   <i *ngIf="node.name === 'Add New'" class="material-icons">
                       add_circle_outline
                   </i>
                   &nbsp;
-                  <span *ngIf="node.name !== 'Add New'">{{node.done}}</span>{{node.name}}
+                  {{node.name}}
               </div>
+              <div align="right" style="transform: translate(0% , -1.5vh)">hello</div>
             </li>
           </mat-nested-tree-node>
           <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-            <li class="example-tree-container">
+            <li class="example-tree-container" style="line-height: 0">
               <div class="mat-tree-node">
                 <button mat-icon-button matTreeNodeToggle
                         [attr.aria-label]="'toggle ' + node.name">
@@ -30,6 +33,7 @@
                     {{node.name}}
                 </span>
               </div>
+              <div align="right" style="transform: translate(0% , -2.2vh)">hello</div>
               <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
                 <ng-container matTreeNodeOutlet></ng-container>
                 <div style="height: 30px;"></div>

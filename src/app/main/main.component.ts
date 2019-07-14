@@ -4,20 +4,11 @@ import {MatTreeNestedDataSource} from '@angular/material/tree';
 
 interface FoodNode {
   name: string;
+  date?: Date;
   children?: FoodNode[];
 }
 
-const TREE_DATA: FoodNode[] = [
-  {
-    name: 'List Title',
-    children: [
-      {name: 'Apple'},
-      {name: 'Banana'},
-      {name: 'Fruit loops'},
-      {name: 'Add New'},
-    ]
-  }
-];
+
 
 @Component({
   selector: 'app-main',
@@ -26,16 +17,49 @@ const TREE_DATA: FoodNode[] = [
 })
 export class MainComponent implements OnInit {
 
-  treeControl = new NestedTreeControl<FoodNode>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<FoodNode>();
+  arr = [
+    {
+      date: new Date(),
+      obj: [
+        {
+          name: 'List Title',
+          children: [
+            {name: 'Apple', done: false},
+            {name: 'Banana',done: false},
+            {name: 'Fruit loops', done: false},
+            {name: 'Add New', done: true},
+          ]
+        },
+        {
+          name: 'List Title 1',
+          children: [
+            {name: 'Apple'},
+            {name: 'Banana'},
+            {name: 'Fruit loops'},
+            {name: 'Add New'},
+          ]
+        }
+      ]
+    },
+    {
+      date: new Date(),
+      obj: [
+        {
+          name: 'List Title',
+          children: [
+            {name: 'Apple'},
+            {name: 'Banana'},
+            {name: 'Fruit loops'},
+            {name: 'Add New'},
+          ]
+        }
+      ]
+    }
+  ];
 
-  panelOpenState = true;
 
   constructor() {
-    this.dataSource.data = TREE_DATA;
   }
-
-  hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
 
   ngOnInit() {
   }

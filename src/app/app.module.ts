@@ -9,13 +9,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { ActionComponent } from './action/action.component';
 import { MainComponent } from './main/main.component';
+import { TreeComponent } from './tree/tree.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SideBarComponent,
     ActionComponent,
-    MainComponent
+    MainComponent,
+    TreeComponent
   ],
   imports: [
     BrowserModule,

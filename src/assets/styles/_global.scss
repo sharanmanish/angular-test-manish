@@ -12,3 +12,15 @@ mat-sidenav {
   width: 20%;
   min-width: 15rem;
 }
+
+.material-icons {
+  cursor: pointer;
+}
+
+.del.material-icons:hover {
+    color: red;
+}
+
+.bc.material-icons:hover {
+    color: #0058fe;
+}

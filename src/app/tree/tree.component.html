@@ -10,7 +10,8 @@
                       <i *ngIf="node.name !== 'Add New' && !node.done" class="material-icons">
                           radio_button_unchecked
                       </i>
-                      <i *ngIf="node.name !== 'Add New' && node.done" class="fa fa-check-circle fa-2x" style="color:green">
+                      <i *ngIf="node.name !== 'Add New' && node.done" class="material-icons" style="color:green">
+                        check_circle_outline
                       </i>
                       <i *ngIf="node.name === 'Add New'" class="material-icons">
                           add_circle_outline
@@ -18,7 +19,9 @@
                       &nbsp;
                   </div>
                   <div style="transform: translate(3vw , -3.9vh);">
-                      {{node.name}}
+                    <span style=" font-size: 16px; font-weight: 500">
+                        {{node.name}}
+                    </span>
                   </div>
                 </div>
                 <div style="width: 86%;">
@@ -41,8 +44,11 @@
                 <div>
                     <button mat-icon-button [disableRipple]="true" matTreeNodeToggle
                       [attr.aria-label]="'toggle ' + node.name" style="transform: translate(1vh , -1.2vh);">
-                      <i class="material-icons">
+                      <i *ngIf="!node.done" class="material-icons">
                         radio_button_checked
+                      </i>
+                      <i *ngIf="node.done" class="material-icons" style="color:green">
+                        check_circle
                       </i>
                       <span style="font-weight: bold; font-size: 18px">
                           {{node.name}}

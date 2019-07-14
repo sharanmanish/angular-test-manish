@@ -37,8 +37,8 @@ export class MainComponent implements OnInit {
         {
           name: 'List Title',
           children: [
-            {name: 'Apple', done: false},
-            {name: 'Banana', done: false},
+            {name: 'Apple', done: true},
+            {name: 'Banana', done: true},
             {name: 'Fruit loops', done: true},
             {name: 'Add New', done: true},
           ]
@@ -52,6 +52,7 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
 }

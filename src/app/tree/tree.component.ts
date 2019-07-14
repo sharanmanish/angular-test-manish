@@ -23,13 +23,30 @@ export class TreeComponent implements OnInit {
   @Input() data;
 
   constructor() {
+
   }
 
   hasChild = (_: number, node: TaskNode) => !!node.children && node.children.length > 0;
 
   ngOnInit() {
-    this.dataSource.data = this.data;
+    this.check();
   }
 
+  check() {
+    for (let i = 0 ; i < this.data.length ; i++) {
 
+      for (let j = 0 ; j < this.data[i].children.length ; j++ ) {
+        if (this.data[i].children[j].done === false) {
+          this.data[i].done = false;
+          break;
+        }
+        if (this.data[i].children[j].done === true && j === (this.data[i].children.length - 1)) {
+          this.data[i].done = true;
+        }
+      }
+
+    }
+    this.dataSource.data = this.data;
+    console.log(this.data)
+  }
 }

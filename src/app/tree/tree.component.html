@@ -7,13 +7,13 @@
                 <div style="display: inline">
                   <div style="transform: translate(0% , -2.3vh)">
                       &nbsp;
-                      <i *ngIf="node.name !== 'Add New' && !node.done" class="material-icons">
+                      <i *ngIf="node.name !== 'Add Tasks' && !node.done" class="material-icons">
                           radio_button_unchecked
                       </i>
-                      <i *ngIf="node.name !== 'Add New' && node.done" class="material-icons" style="color:green">
+                      <i *ngIf="node.name !== 'Add Tasks' && node.done" class="material-icons" style="color:green">
                         check_circle_outline
                       </i>
-                      <i *ngIf="node.name === 'Add New'" class="material-icons">
+                      <i *ngIf="node.name === 'Add Tasks'" class="material-icons">
                           add_circle_outline
                       </i>
                       &nbsp;
@@ -26,11 +26,11 @@
                 </div>
                 <div style="width: 86%;">
                     <div align="right" style="transform: translate(0% , -2.2vh)">
-                        <i class="bc material-icons">
+                        <i *ngIf="node.name !== 'Add Tasks'" class="bc material-icons">
                             border_color
                         </i>
                         &nbsp;
-                        <i class="del material-icons">
+                        <i *ngIf="node.name !== 'Add Tasks'" class="del material-icons">
                             delete
                         </i>
                     </div>

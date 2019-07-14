@@ -17,7 +17,7 @@ export class MainComponent implements OnInit {
             {name: 'Apple', done: true},
             {name: 'Banana', done: false},
             {name: 'Fruit loops', done: false},
-            {name: 'Add New', done: true},
+            {name: 'Add Tasks', done: true},
           ]
         },
         {
@@ -26,7 +26,7 @@ export class MainComponent implements OnInit {
             {name: 'Apple', done: false},
             {name: 'Banana', done: true},
             {name: 'Fruit loops', done: false},
-            {name: 'Add New', done: true},
+            {name: 'Add Tasks', done: true},
           ]
         }
       ]
@@ -40,7 +40,7 @@ export class MainComponent implements OnInit {
             {name: 'Apple', done: true},
             {name: 'Banana', done: true},
             {name: 'Fruit loops', done: true},
-            {name: 'Add New', done: true},
+            {name: 'Add Tasks', done: true},
           ]
         }
       ]

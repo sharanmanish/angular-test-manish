@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../app.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-main',
@@ -47,12 +49,22 @@ export class MainComponent implements OnInit {
     }
   ];
 
+  filteredArray = [];
 
-  constructor() {
+  constructor(private appService: AppService) {
   }
 
   ngOnInit() {
-
+    this.appService.status.subscribe( result => {
+      if (result) {
+        this.filteredArray =  this.arr.filter( val => {
+         return  moment(val.date).format('DD-MM-YYYY') === moment(new Date()).format('DD-MM-YYYY');
+        }) ;
+        console.log(this.filteredArray);
+      } else {
+        this.filteredArray = this.arr;
+      }
+    });
   }
 
 }

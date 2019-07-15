@@ -16,7 +16,7 @@ export class ActionComponent implements OnInit {
   }
 
   selectItems(index) {
-this.marked = index;
+    this.marked = index;
   }
 
 }

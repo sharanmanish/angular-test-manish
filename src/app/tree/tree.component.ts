@@ -1,9 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {NestedTreeControl} from '@angular/cdk/tree';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
+import { AppService } from '../app.service';
+import { MainComponent } from '../main/main.component';
 
 interface TaskNode {
   name: string;
+  _id: string;
   children?: TaskNode[];
 }
 
@@ -21,8 +24,9 @@ export class TreeComponent implements OnInit {
   panelOpenState = true;
 
   @Input() data;
+  @Input() dataID;
 
-  constructor() {
+  constructor(private appService: AppService, private mainComponent: MainComponent) {
 
   }
 
@@ -47,6 +51,17 @@ export class TreeComponent implements OnInit {
 
     }
     this.dataSource.data = this.data;
-    console.log(this.data)
   }
+
+  deleteTask(id) {
+    this.appService.deleteTask(id, this.dataID);
+    setTimeout(() => {
+      this.dataSource = this.data;
+    }, 300);
+  }
+
+  deleteSubTask(id) {
+
+  }
+
 }

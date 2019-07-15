@@ -29,3 +29,11 @@
 .paddingtop {
   padding-top: 155px
 }
+
+.del {
+  visibility: hidden;
+}
+
+.mat-expansion-panel:hover .del {
+  visibility: visible;
+}

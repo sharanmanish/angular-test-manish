@@ -2,13 +2,13 @@
   <div  *ngFor="let a of arr" style="padding-top: 10px">
       <mat-expansion-panel>
           <mat-expansion-panel-header>
-            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="0px">
-              <div fxFlex=30>
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="0px" style="width: 100%">
+              <div fxFlex=15>
                   <mat-panel-title style="font-size: 1.4em; font-weight:200; color:#aaaaaa">
                       {{a.date | date:'mediumDate'}}
                   </mat-panel-title>
               </div>
-              <div fxLayout="row" fxLayoutAlign="center center" fxFlex="90">
+              <div fxLayout="row" fxLayoutAlign="center center" fxFlex="80">
                   <div class="line"></div>
               </div>
               <div fxFlex style="padding-left: 11px">

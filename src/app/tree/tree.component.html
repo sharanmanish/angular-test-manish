@@ -14,7 +14,9 @@
               add_circle_outline
               </i>
               &nbsp;
+              <span style="font-weight: medium; font-size: 16px ; line-height: 0">
               {{node.name}}
+              </span>
               <i *ngIf="node.name !== 'Add Tasks'" class="bc material-icons" style="position: absolute; margin-left: 92%">
                     border_color
               </i>
@@ -40,7 +42,7 @@
                         check_circle
                 </i>
         </button>
-        {{node.name}}
+        <span style="font-weight: bold; font-size: 18px ; line-height: 0">{{node.name}}</span>
 
         <i class="bc material-icons" style="position: absolute; margin-left: 91%">
                             border_color

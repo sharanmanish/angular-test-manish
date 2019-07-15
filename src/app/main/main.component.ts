@@ -46,6 +46,20 @@ export class MainComponent implements OnInit {
           ]
         }
       ]
+    },
+    {
+      date: new Date(new Date().setDate(new Date().getDate() - 2)),
+      obj: [
+        {
+          name: 'List Title',
+          children: [
+            {name: 'Apple', done: true},
+            {name: 'Banana', done: true},
+            {name: 'Fruit loops', done: true},
+            {name: 'Add Tasks', done: true},
+          ]
+        }
+      ]
     }
   ];
 
@@ -65,6 +79,13 @@ export class MainComponent implements OnInit {
         this.filteredArray = this.arr;
       }
     });
+  }
+
+  deleteExp(index) {
+    this.arr = this.arr.filter((x, y, z) => {
+      return y !== index;
+    });
+    this.filteredArray = this.arr;
   }
 
 }

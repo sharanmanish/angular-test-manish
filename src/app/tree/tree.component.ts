@@ -16,6 +16,10 @@ export interface DialogData {
   name: string;
 }
 
+export interface editTask {
+  name: string;
+}
+
 @Component({
   selector: 'app-tree',
   templateUrl: './tree.component.html',
@@ -42,23 +46,24 @@ export class TreeComponent implements OnInit {
 
   ngOnInit() {
     this.check();
+    this.dataSource.data = this.data;
   }
 
   check() {
     for (let i = 0 ; i < this.data.length ; i++) {
 
-      for (let j = 0 ; j < this.data[i].children.length ; j++ ) {
+      for (let j = 0 ; j < this.data[i].children.length - 1; j++ ) {
         if (this.data[i].children[j].done === false) {
           this.data[i].done = false;
           break;
         }
-        if (this.data[i].children[j].done === true && j === (this.data[i].children.length - 1)) {
+        if (this.data[i].children[j].done === true && j === (this.data[i].children.length - 2)) {
           this.data[i].done = true;
         }
       }
 
     }
-    this.dataSource.data = this.data;
+
   }
 
   deleteTask(id) {
@@ -80,6 +85,7 @@ export class TreeComponent implements OnInit {
       this.dataSource = new MatTreeNestedDataSource();
       this.dataSource.data = this.data;
     }, 300);
+    this.check();
   }
 
   addSubTaskPop(addTaskId): void {
@@ -95,6 +101,7 @@ export class TreeComponent implements OnInit {
         this.addSubtask(this.name, addTaskId);
       }
       console.log('The dialog was closed');
+      this.check();
     });
   }
 
@@ -128,11 +135,15 @@ editSubTask(res, id) {
         element.obj.forEach((x) => {
           x.children.forEach((y) => {
             if(Object.values(y).includes(id)){
+              y.name = res.name;
               y.done = res.done;
+              this.check();
             }
           })
         });
     });
+
+
   setTimeout(() => {
       this.dataSource.data = null;
       this.treeControl = new NestedTreeControl<TaskNode>(node => node.children);
@@ -140,6 +151,32 @@ editSubTask(res, id) {
       this.dataSource.data = this.data;
     }, 300);
 }
+
+editTask(node) {
+  const dialogRef = this.dialog.open(EditTaskDialog, {
+      width: '250px',
+      data: {name: node.name}
+    });
+
+     dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if(result != '' && result !== undefined){
+        this.editTaskNode(node, result);
+      }
+    });
+}
+
+
+editTaskNode(node, result) {
+   this.appService.arr.forEach(element => {
+      element.obj.forEach((x) => {
+        if(x._id === node._id) {
+          x.name = result;
+        }
+      });
+  });
+}
+
 
 }
 
@@ -151,6 +188,22 @@ export class TreeDialog {
 
   constructor(
     public dialogRef: MatDialogRef<TreeDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'edit-task-dialog',
+  templateUrl: 'edit-task-dialog.html',
+})
+export class EditTaskDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<EditTaskDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {

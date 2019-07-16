@@ -2,11 +2,11 @@
 <div fxLayout="row" fxLayoutAlign="space-between center">
     <div fxLayout="row" class="marginright">
         <div>
-          <input type="text" class="inputSearchBox image-prop"
-            (keyup.backspace)="revertTo()">
+          <input type="text" class="inputSearchBox image-prop" [(ngModel)]="searchString"
+          (keyup.enter)="searchInput()"  (keyup.backspace)="searchInput()">
         </div>
         <div>
-            <i class="material-icons trns">
+            <i class="material-icons trns" (click)="searchInput()">
                 search
             </i>
         </div>
@@ -20,7 +20,7 @@
                 <i class="fa fa-check color-green" *ngIf="marked===i"></i>
             </div>
         </mat-menu>
-        <button mat-button [matMenuTriggerFor]="appMenu">
+        <button mat-button [matMenuTriggerFor]="appMenu" (click)="refreshPage()">
             Sort By &nbsp;
               <i class="material-icons">
                   keyboard_arrow_down

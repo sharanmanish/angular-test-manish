@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AppService } from '../app.service';
 import * as moment from 'moment';
+import { throwError } from 'rxjs';
 
 export interface DialogData {
   name: string;
@@ -15,8 +16,11 @@ export interface DialogData {
 export class ActionComponent implements OnInit {
 
   menuList = ['Completed', 'Not Completed', 'Clear All'];
-  marked= 0;
+  marked = null;
   name: string;
+  dataBackup = [];
+
+  searchString = '';
 
   constructor(public dialog: MatDialog,private appService: AppService) { }
 
@@ -24,7 +28,15 @@ export class ActionComponent implements OnInit {
   }
 
   selectItems(index) {
+    Object.assign(this.dataBackup, this.appService.arr);
     this.marked = index;
+    if (index === 0) {
+      this.compSort();
+    } else if (index === 1) {
+      this.notCompSort();
+    } else {
+      this.resetSort();
+    }
   }
 
   addTask(): void {
@@ -62,12 +74,13 @@ export class ActionComponent implements OnInit {
         let obj = {
           _id: id(),
           name: result,
+          done: false,
           children: [
             {_id: id(), name: 'Add Tasks', done: true},
           ]
         }
 
-        this.appService.arr[i].obj.push(obj);
+        this.appService.arr[i].obj.unshift(obj);
         break;
       }
     };
@@ -85,6 +98,7 @@ export class ActionComponent implements OnInit {
         {
           _id: id(),
           name: result,
+          done: false,
           children: [
             {_id: id(), name: 'Add Tasks', done: true},
           ]
@@ -95,9 +109,80 @@ export class ActionComponent implements OnInit {
     this.appService.arr.unshift(obj);
   }
 
-}
+  }
 
+  compSort() {
+      this.appService.arr.forEach((x, y, z) => {
+        if(x._id === undefined) {
+          this.appService.arr = this.appService.arr.filter((m, n, o) => {
+            return n !== y;
+          });
+        }
+        x.obj.forEach((j, k, l) => {
+          if(j.done === false){
+            if(k === l.length-1){
+              this.appService.arr = this.appService.arr.filter((m, n, o) => {
+                return n !== y;
+              });
+            } else {
+              x.obj = x.obj.filter((p) => {
+                return p.done !== false;
+              });
+            }
+          } else {
 
+          }
+        });
+      });
+    this.appService.chnageStatus(false);
+    // this.appService.refStatus(true);
+  }
+
+  notCompSort() {
+    this.appService.arr.forEach((x, y, z) => {
+      x.obj.forEach((j, k, l) => {
+        if(j.done === false){
+          if(k === l.length-1){
+            this.appService.arr = this.appService.arr.filter((m, n, o) => {
+              return n === y;
+            });
+          } else {
+            x.obj = x.obj.filter((p) => {
+              return p.done === false;
+            });
+          }
+        } else {
+
+        }
+      });
+    });
+    this.appService.chnageStatus(false);
+  }
+
+  resetSort() {
+    Object.assign(this.appService.arr , this.dataBackup);
+    this.appService.chnageStatus(false);
+  }
+
+  refreshPage() {
+    // this.appService.arr = [];
+    // Object.assign(this.appService, this.dataBackup);
+  }
+
+  searchInput() {
+    if (this.searchString !== '') {
+      this.appService.arr.forEach((x, y, z) => {
+        x.obj.forEach((j, k, l) => {
+          if(j.name.toLowerCase === this.searchString.toLowerCase){
+            x.obj.filter((y,z,m ) => {
+                return y !== j;
+            });
+          }
+        });
+      });
+      this.appService.chnageStatus(false);
+    }
+  }
 }
 
 @Component({

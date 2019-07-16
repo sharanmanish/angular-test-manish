@@ -9,6 +9,7 @@ import { DialogService } from '../dialog.service';
 interface TaskNode {
   name: string;
   _id: string;
+  done: boolean
   children?: TaskNode[];
 }
 

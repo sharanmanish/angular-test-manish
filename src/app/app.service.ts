@@ -14,6 +14,7 @@ export class AppService {
         {
           _id: 'v',
           name: 'List Title',
+          done: false,
           children: [
             {_id: 'b', name: 'Apple', done: true},
             {_id: 'c', name: 'Banana', done: false},
@@ -24,6 +25,7 @@ export class AppService {
         {
           _id: 'u',
           name: 'List Title 1',
+          done: false,
           children: [
             {_id: 'f', name: 'Apple', done: false},
             {_id: 'g', name: 'Banana', done: true},
@@ -40,6 +42,7 @@ export class AppService {
         {
           _id: 's',
           name: 'List Title',
+          done: false,
           children: [
             {_id: 'j', name: 'Apple', done: true},
             {_id: 'k', name: 'Banana', done: true},
@@ -55,6 +58,7 @@ export class AppService {
         {
           _id: 'n',
           name: 'List Title',
+          done: false,
           children: [
             {_id: 'o', name: 'Apple', done: true},
             {_id: 'p', name: 'Banana', done: true},

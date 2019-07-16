@@ -84,7 +84,7 @@ export class ActionComponent implements OnInit {
       obj: [
         {
           _id: id(),
-          name: 'List Title',
+          name: result,
           children: [
             {_id: id(), name: 'Add Tasks', done: true},
           ]

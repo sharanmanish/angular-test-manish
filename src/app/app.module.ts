@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { CustomMaterialModule } from './custom-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SideBarComponent } from './side-bar/side-bar.component';
-import { ActionComponent } from './action/action.component';
+import { ActionComponent, AddTskDialog } from './action/action.component';
 import { MainComponent } from './main/main.component';
 import { TreeComponent, TreeDialog, EditTaskDialog } from './tree/tree.component';
 import { FormsModule } from '@angular/forms';
@@ -22,7 +22,8 @@ import { EditComponent } from './edit/edit.component';
     TreeComponent,
     TreeDialog,
     EditComponent,
-    EditTaskDialog
+    EditTaskDialog,
+    AddTskDialog
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,7 @@ import { EditComponent } from './edit/edit.component';
     FlexLayoutModule,
     FormsModule
   ],
-  entryComponents: [TreeDialog, EditComponent, EditTaskDialog],
+  entryComponents: [TreeDialog, EditComponent, EditTaskDialog, AddTskDialog],
   providers: [],
   bootstrap: [AppComponent]
 })

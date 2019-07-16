@@ -69,13 +69,20 @@ export class AppService {
   click = false;
   ref = false;
   status: BehaviorSubject<boolean>;
+  refresh: BehaviorSubject<boolean>;
 
 
   constructor() {
     this.status  = new BehaviorSubject(this.click);
+    this.refresh = new BehaviorSubject(this.ref);
    }
 
-   chnageStatus(value) {
+   refStatus(value) {
+     this.ref = value;
+     this.refresh.next(value);
+   }
+
+    chnageStatus(value) {
      this.click = value;
      this.status.next(value);
    }

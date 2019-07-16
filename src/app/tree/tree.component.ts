@@ -47,6 +47,10 @@ export class TreeComponent implements OnInit {
   ngOnInit() {
     this.check();
     this.dataSource.data = this.data;
+    this.appService.refresh.subscribe( result => {
+      if (result) {
+        this.dataSource.data = this.data;
+      }});
   }
 
   check() {

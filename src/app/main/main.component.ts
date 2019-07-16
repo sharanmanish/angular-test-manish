@@ -24,12 +24,6 @@ export class MainComponent implements OnInit {
         this.filteredArray = this.appService.arr;
       }
     });
-    this.appService.refresh.subscribe( res => {
-      if(res) {
-        this.filteredArray = this.appService.arr;
-        this.appService.chnageStatus(true);
-      }
-    });
   }
 
   deleteExp(index) {

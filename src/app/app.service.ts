@@ -69,12 +69,10 @@ export class AppService {
   click = false;
   ref = false;
   status: BehaviorSubject<boolean>;
-  refresh: BehaviorSubject<boolean>;
 
 
   constructor() {
     this.status  = new BehaviorSubject(this.click);
-    this.refresh = new BehaviorSubject(this.ref);
    }
 
    chnageStatus(value) {
@@ -82,18 +80,9 @@ export class AppService {
      this.status.next(value);
    }
 
-   sendRef(val) {
-     this.refresh.next(val);
-   }
-
    deleteTask(id, dataID) {
     this.arr.forEach(element => {
-      if (element._id === dataID) {
-        console.log(element.obj);
         element.obj = element.obj.filter(x => x._id !== id);
-        console.log(element.obj);
-      }
     });
-    this.sendRef(true);
   }
 }

@@ -21,7 +21,7 @@
                     border_color
               </i>
                     &nbsp;
-              <i *ngIf="node.name !== 'Add Tasks'" class="del material-icons" style="position: absolute; margin-left: 96%">
+              <i *ngIf="node.name !== 'Add Tasks'" class="del material-icons" style="position: absolute; margin-left: 96%" (click) ="deleteSubTask(node._id)">
                     delete
               </i>
       </div>

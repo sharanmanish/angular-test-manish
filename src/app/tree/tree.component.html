@@ -10,14 +10,15 @@
               <i *ngIf="node.name !== 'Add Tasks' && node.done" class="material-icons" style="color:green">
               check_circle_outline
               </i>
-              <i *ngIf="node.name === 'Add Tasks'" class="material-icons">
+              <i *ngIf="node.name === 'Add Tasks'" class="material-icons" (click) = "addSubTaskPop(node._id)">
               add_circle_outline
               </i>
               &nbsp;
               <span style="font-weight: medium; font-size: 16px ; line-height: 0">
               {{node.name}}
               </span>
-              <i *ngIf="node.name !== 'Add Tasks'" class="bc material-icons" style="position: absolute; margin-left: 92%">
+              <i *ngIf="node.name !== 'Add Tasks'" class="bc material-icons" style="position: absolute; margin-left: 92%"
+              (click)="edit(node, node._id)">
                     border_color
               </i>
                     &nbsp;

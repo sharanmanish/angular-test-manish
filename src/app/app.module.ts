@@ -9,7 +9,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { ActionComponent } from './action/action.component';
 import { MainComponent } from './main/main.component';
-import { TreeComponent } from './tree/tree.component';
+import { TreeComponent, TreeDialog } from './tree/tree.component';
+import { FormsModule } from '@angular/forms';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -17,15 +19,19 @@ import { TreeComponent } from './tree/tree.component';
     SideBarComponent,
     ActionComponent,
     MainComponent,
-    TreeComponent
+    TreeComponent,
+    TreeDialog,
+    EditComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     CustomMaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ],
+  entryComponents: [TreeDialog, EditComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

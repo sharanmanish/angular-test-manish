@@ -1,0 +1,23 @@
+<div class="cont">
+ <div class="header">EDIT</div>
+ <div class="margin-top20">
+ <mat-form-field class="example-full-width">
+   <input matInput placeholder="Name" [(ngModel)]="tempData.name">
+ </mat-form-field>
+ </div>
+
+<div class="margin-top20">
+ <mat-form-field class="example-full-width">
+ <mat-label>Status</mat-label>
+ <mat-select [(value)]="tempData.done">
+   <mat-option *ngFor="let stat of status" [value]="stat.value">
+     {{stat.viewValue}}
+   </mat-option>
+ </mat-select>
+</mat-form-field>
+</div>
+<div fxLayout="row" fxLayoutAlign="flex-end" fxLayoutGap="20px" class="margin-top20">
+   <button mat-raised-button (click)="dialogRef.close()">Cancel</button>
+ <button mat-raised-button color="primary" (click)="save()">Submit</button>
+</div>
+</div>

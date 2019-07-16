@@ -56,17 +56,23 @@ export class TreeComponent implements OnInit {
   deleteTask(id) {
     this.appService.deleteTask(id, this.dataID);
     setTimeout(() => {
-      this.dataSource = this.data;
+      this.dataSource.data = this.data;
     }, 300);
   }
 
   deleteSubTask(id) {
     this.appService.arr.forEach(element => {
         element.obj.forEach((x) => {
-          console.log('called');
           x.children = x.children.filter(y => y._id !== id);
         })
     });
-    console.log(this.dataSource.data);
+    setTimeout(() => {
+      this.dataSource.data = null;
+      this.treeControl = new NestedTreeControl<TaskNode>(node => node.children);
+      this.dataSource = new MatTreeNestedDataSource();
+      this.dataSource.data = this.data;
+    }, 300);
+    console.log(this.data);
+    console.log(this.dataSource);
   }
 }

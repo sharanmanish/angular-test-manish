@@ -89,8 +89,11 @@ export class TreeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.name = result;
-      this.addSubtask(this.name, addTaskId);
+      console.log(result);
+      if(result != '' && result !== undefined){
+        this.name = result;
+        this.addSubtask(this.name, addTaskId);
+      }
       console.log('The dialog was closed');
     });
   }

@@ -9,7 +9,6 @@ import * as moment from 'moment';
 })
 export class MainComponent implements OnInit {
 
-  filteredArray = [];
 
   constructor(private appService: AppService) {
   }
@@ -17,11 +16,11 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.appService.status.subscribe( result => {
       if (result) {
-        this.filteredArray =  this.appService.arr.filter( val => {
+        this.appService.filteredArray =  this.appService.arr.filter( val => {
          return  moment(val.date).format('DD-MM-YYYY') === moment(new Date()).format('DD-MM-YYYY');
         }) ;
       } else {
-        this.filteredArray = this.appService.arr;
+        this.appService.filteredArray = this.appService.arr;
       }
     });
   }
@@ -30,7 +29,7 @@ export class MainComponent implements OnInit {
     this.appService.arr = this.appService.arr.filter((x, y, z) => {
       return y !== index;
     });
-    this.filteredArray = this.appService.arr;
+    this.appService.filteredArray = this.appService.arr;
   }
 
 }

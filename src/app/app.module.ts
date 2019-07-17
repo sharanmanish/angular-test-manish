@@ -12,6 +12,9 @@ import { MainComponent } from './main/main.component';
 import { TreeComponent, TreeDialog, EditTaskDialog } from './tree/tree.component';
 import { FormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { FakeBackendService } from "./fake-backend.service";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { EditComponent } from './edit/edit.component';
     AppRoutingModule,
     CustomMaterialModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(FakeBackendService)
   ],
   entryComponents: [TreeDialog, EditComponent, EditTaskDialog, AddTskDialog],
   providers: [],

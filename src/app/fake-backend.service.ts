@@ -1,18 +1,8 @@
-import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { HttpClient } from "@angular/common/http";
-import { map } from 'rxjs/operators';
+import { InMemoryDbService } from "angular-in-memory-web-api";
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AppService implements OnInit {
-
-  base_url: string = "http://mybackend.com/api/";
-  arr_endpoint = "arr1";
-  filteredArray = [];
-
-  arr = [
+export class FakeBackendService implements InMemoryDbService {
+  createDb() {
+    let arr1 = [
     {
       _id: 'a',
       date: new Date(),
@@ -76,50 +66,6 @@ export class AppService implements OnInit {
     }
   ];
 
-
-  click = false;
-  ref = false;
-  status: BehaviorSubject<boolean>;
-  refresh: BehaviorSubject<boolean>;
-
-
-  constructor(private http: HttpClient) {
-    this.status  = new BehaviorSubject(this.click);
-    this.refresh = new BehaviorSubject(this.ref);
-   }
-
-   ngOnInit() {
-
-   }
-
-   getArr() {
-     return this.http.get(this.base_url + this.arr_endpoint).subscribe(res => {
-        this.arr = Object.assign([], res);
-        console.log(this.arr);
-        this.chnageStatus(false);
-        this.refStatus(true);
-      });
-  };
-   getArrwithoutSt() {
-     return this.http.get(this.base_url + this.arr_endpoint).subscribe(res => {
-        this.arr = Object.assign([], res);
-        console.log(this.arr);
-      });
-  };
-
-   refStatus(value) {
-     this.ref = value;
-     this.refresh.next(value);
-   }
-
-    chnageStatus(value) {
-     this.click = value;
-     this.status.next(value);
-   }
-
-   deleteTask(id, dataID) {
-    this.arr.forEach(element => {
-        element.obj = element.obj.filter(x => x._id !== id);
-    });
+    return { arr1 };
   }
 }

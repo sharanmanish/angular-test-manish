@@ -18,7 +18,6 @@ export class ActionComponent implements OnInit {
   menuList = ['Completed', 'Not Completed', 'Clear All'];
   marked = null;
   name: string;
-  dataBackup = [];
 
   searchString = '';
 
@@ -28,7 +27,6 @@ export class ActionComponent implements OnInit {
   }
 
   selectItems(index) {
-    Object.assign(this.dataBackup, this.appService.arr);
     this.marked = index;
     if (index === 0) {
       this.compSort();
@@ -112,33 +110,30 @@ export class ActionComponent implements OnInit {
   }
 
   compSort() {
-      this.appService.arr.forEach((x, y, z) => {
-        if(x._id === undefined) {
-          this.appService.arr = this.appService.arr.filter((m, n, o) => {
-            return n !== y;
-          });
-        }
-        x.obj.forEach((j, k, l) => {
-          if(j.done === false){
-            if(k === l.length-1){
-              this.appService.arr = this.appService.arr.filter((m, n, o) => {
-                return n !== y;
-              });
-            } else {
-              x.obj = x.obj.filter((p) => {
-                return p.done !== false;
-              });
-            }
+    this.appService.getArrwithoutSt();
+    this.appService.arr.forEach((x, y, z) => {
+      x.obj.forEach((j, k, l) => {
+        if(j.done === false){
+          if(k === l.length-1){
+            this.appService.arr = this.appService.arr.filter((m, n, o) => {
+              return n !== y;
+            });
           } else {
-
+            x.obj = x.obj.filter((p) => {
+              return p.done !== false;
+            });
           }
-        });
+        } else {
+
+        }
       });
-    this.appService.chnageStatus(false);
-    // this.appService.refStatus(true);
+    });
+    console.log(this.appService.arr);
+    this.appService.filteredArray = this.appService.arr;
   }
 
   notCompSort() {
+    this.appService.getArrwithoutSt();
     this.appService.arr.forEach((x, y, z) => {
       x.obj.forEach((j, k, l) => {
         if(j.done === false){
@@ -156,17 +151,16 @@ export class ActionComponent implements OnInit {
         }
       });
     });
-    this.appService.chnageStatus(false);
+    console.log(this.appService.arr);
+    this.appService.filteredArray = this.appService.arr;
   }
 
   resetSort() {
-    Object.assign(this.appService.arr , this.dataBackup);
-    this.appService.chnageStatus(false);
+    this.appService.getArr();
   }
 
   refreshPage() {
-    // this.appService.arr = [];
-    // Object.assign(this.appService, this.dataBackup);
+
   }
 
   searchInput() {

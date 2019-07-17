@@ -81,7 +81,7 @@ export class TreeComponent implements OnInit {
   deleteSubTask(id) {
     this.appService.arr.forEach(element => {
         element.obj.forEach((x) => {
-          x.children = x.children.filter(y => y._id !== id);
+          x.children = Object.assign([],x.children).filter(y => y._id !== id);
         })
     });
     setTimeout(() => {

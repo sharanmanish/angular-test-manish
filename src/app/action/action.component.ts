@@ -44,7 +44,6 @@ export class ActionComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
 
       if(result != '' && result !== undefined) {
         this.addTaskNode(result);
@@ -128,7 +127,6 @@ export class ActionComponent implements OnInit {
         }
       });
     });
-    console.log(this.appService.arr);
     this.appService.filteredArray = this.appService.arr;
   }
 
@@ -151,7 +149,6 @@ export class ActionComponent implements OnInit {
         }
       });
     });
-    console.log(this.appService.arr);
     this.appService.filteredArray = this.appService.arr;
   }
 
@@ -165,16 +162,31 @@ export class ActionComponent implements OnInit {
 
   searchInput() {
     if (this.searchString !== '') {
+      this.appService.getArrwithoutSt();
       this.appService.arr.forEach((x, y, z) => {
-        x.obj.forEach((j, k, l) => {
-          if(j.name.toLowerCase === this.searchString.toLowerCase){
-            x.obj.filter((y,z,m ) => {
-                return y !== j;
+      x.obj.forEach((j, k, l) => {
+        if(j.name.toLowerCase.toString().includes(this.searchString.toLowerCase.toString())){
+          if(k === l.length-1){
+            this.appService.arr = this.appService.arr.filter((m, n, o) => {
+              return n === y;
+            });
+          } else {
+            x.obj = x.obj.filter((p) => {
+              return !p.name.toLowerCase.toString().includes(this.searchString.toLowerCase.toString());
             });
           }
-        });
+        } else {
+
+        }
       });
-      this.appService.chnageStatus(false);
+    });
+
+    this.appService.filteredArray = this.appService.arr;
+    console.log(this.appService.arr);
+    }
+    else {
+      this.appService.getArr();
+      console.log(this.appService.arr);
     }
   }
 }

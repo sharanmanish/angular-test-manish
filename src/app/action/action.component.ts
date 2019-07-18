@@ -165,28 +165,29 @@ export class ActionComponent implements OnInit {
       this.appService.getArrwithoutSt();
       this.appService.arr.forEach((x, y, z) => {
       x.obj.forEach((j, k, l) => {
-        if(j.name.toLowerCase.toString().includes(this.searchString.toLowerCase.toString())){
+        if(!j.name.toLowerCase().toString().includes(this.searchString.toLowerCase().toString())){
           if(k === l.length-1){
             this.appService.arr = this.appService.arr.filter((m, n, o) => {
               return n === y;
             });
           } else {
             x.obj = x.obj.filter((p) => {
-              return !p.name.toLowerCase.toString().includes(this.searchString.toLowerCase.toString());
+              return !p.name.toLowerCase().toString().includes(this.searchString.toLowerCase().toString());
             });
           }
         } else {
-
+            console.log(j.name.toLowerCase().toString());
+            x.obj = x.obj.filter((p) => {
+              return p.name.toLowerCase().toString().includes(this.searchString.toLowerCase().toString());
+            });
         }
       });
     });
 
     this.appService.filteredArray = this.appService.arr;
-    console.log(this.appService.arr);
     }
     else {
       this.appService.getArr();
-      console.log(this.appService.arr);
     }
   }
 }

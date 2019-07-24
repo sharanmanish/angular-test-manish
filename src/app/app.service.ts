@@ -93,18 +93,21 @@ export class AppService implements OnInit {
    }
 
    getArr() {
-     return this.http.get(this.base_url + this.arr_endpoint).subscribe(res => {
-        this.arr = Object.assign([], res);
-        console.log(this.arr);
-        this.chnageStatus(false);
-        this.refStatus(true);
-      });
+    //  return this.http.get(this.base_url + this.arr_endpoint).subscribe(res => {
+    //     this.arr = Object.assign([], res);
+    //     console.log(this.arr);
+    //     this.chnageStatus(false);
+    //     this.refStatus(true);
+    //   });
+    this.chnageStatus(false);
+    this.refStatus(true);
+    return this.arr;
   };
    getArrwithoutSt() {
-     return this.http.get(this.base_url + this.arr_endpoint).subscribe(res => {
-        this.arr = Object.assign([], res);
-        console.log(this.arr);
-      });
+    //  return this.http.get(this.base_url + this.arr_endpoint).subscribe(res => {
+    //     this.arr = Object.assign([], res);
+    //     console.log(this.arr);
+    //   });
   };
 
    refStatus(value) {

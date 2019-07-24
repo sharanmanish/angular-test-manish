@@ -82,7 +82,7 @@ export class ActionComponent implements OnInit {
       }
     };
 
-  if(reached === 0){
+    if(reached === 0){
 
     let id = function() {
           return Math.floor(1000 + Math.random() * 9000) + '';
@@ -104,17 +104,20 @@ export class ActionComponent implements OnInit {
     };
 
     this.appService.arr.unshift(obj);
-  }
 
+    }
+    console.log(this.appService.getArr());
+    this.marked = null;
   }
 
   compSort() {
     this.appService.getArrwithoutSt();
-    this.appService.arr.forEach((x, y, z) => {
+    let clone = JSON.parse(JSON.stringify(this.appService.arr));
+    clone.forEach((x, y, z) => {
       x.obj.forEach((j, k, l) => {
         if(j.done === false){
           if(k === l.length-1){
-            this.appService.arr = this.appService.arr.filter((m, n, o) => {
+            clone = clone.filter((m, n, o) => {
               return n !== y;
             });
           } else {
@@ -127,16 +130,18 @@ export class ActionComponent implements OnInit {
         }
       });
     });
-    this.appService.filteredArray = this.appService.arr;
+    this.appService.filteredArray = clone;
+    console.log(this.appService.filteredArray);
   }
 
   notCompSort() {
     this.appService.getArrwithoutSt();
-    this.appService.arr.forEach((x, y, z) => {
+    let clone = JSON.parse(JSON.stringify(this.appService.arr));
+    clone.forEach((x, y, z) => {
       x.obj.forEach((j, k, l) => {
         if(j.done === false){
           if(k === l.length-1){
-            this.appService.arr = this.appService.arr.filter((m, n, o) => {
+            clone = clone.filter((m, n, o) => {
               return n === y;
             });
           } else {
@@ -149,11 +154,13 @@ export class ActionComponent implements OnInit {
         }
       });
     });
-    this.appService.filteredArray = this.appService.arr;
+    this.appService.filteredArray = clone;
+    console.log(this.appService.filteredArray);
   }
 
   resetSort() {
     this.appService.getArr();
+    console.log(this.appService.getArr());
   }
 
   refreshPage() {
@@ -184,7 +191,7 @@ export class ActionComponent implements OnInit {
       });
     });
 
-    this.appService.filteredArray = this.appService.arr;
+      this.appService.filteredArray = this.appService.arr;
     }
     else {
       this.appService.getArr();
